@@ -1,0 +1,413 @@
+//================================================================//
+//===// Incorporating required default layout scss variables //===//
+//================================================================//
+
+@use '../global' as *;
+@use '../components' as *;
+
+//====================//
+//===// Reusable //===//
+//====================//
+
+//===// Container //===//
+
+.container {
+  position: relative;
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+//===// Text decoration //===//
+
+.bold {
+  font-weight: 700;
+}
+
+//===// Scroll up //===//
+
+.scrollUp {
+  position: fixed;
+  right: 20px;
+  bottom: 60px;
+  z-index: 2;
+  opacity: 0;
+  visibility: hidden;
+  background: transparent;
+  box-shadow: none;
+  transition: all time(btn-anim-time) ease;
+
+  &.scrollUp--active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  @include mouse-hover;
+}
+
+//================//
+//===// Body //===//
+//================//
+
+body {
+  background: color(bg);
+  color: color(txt);
+  font-family: font(txt);
+
+  &::-webkit-scrollbar {
+    width: 0.8rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: color(bg);
+    margin: 0.08rem 0;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: color(accent);
+    border: 2.75px solid color(bg);
+    border-radius: 10px;
+  }
+}
+
+//================//
+//===// Main //===//
+//================//
+
+main {
+  position: relative;
+  z-index: 2;
+}
+
+//===// Section spacing //===//
+
+section + section {
+  padding: 3.5em 0 2.5em;
+}
+
+//===// Section elements //===//
+
+.section {
+  &__title {
+    position: relative;
+    z-index: 2;
+    font-size: 2rem;
+    margin-bottom: 1em;
+
+    &--left {
+      text-align: left;
+    }
+
+    &--right {
+      text-align: right;
+    }
+  }
+
+  &__text {
+    position: relative;
+    z-index: 2;
+    text-align: justify;
+    font-size: 1rem;
+
+    & + & {
+      margin: 2em 0 1em;
+    }
+  }
+
+  &__quote {
+    display: block;
+    position: relative;
+    z-index: 2;
+    text-align: left;
+    border-radius: 10px;
+    padding: 1em 2em;
+
+    & + & {
+      margin-top: 1em;
+    }
+
+    &--light {
+      background: color(txt-accent);
+      color: color(txt);
+    }
+
+    &--dark {
+      background: color(bg);
+      color: color(txt-accent);
+    }
+  }
+}
+
+.emoji {
+  &--section {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    opacity: 0.2;
+  }
+
+  &--quote {
+    display: block;
+    position: absolute;
+    z-index: 3;
+    opacity: 0.2;
+  }
+
+  &--light {
+    color: color(emoji-light);
+  }
+
+  &--dark {
+    color: color(emoji-dark);
+  }
+}
+
+//==================================//
+//===// Main > Landing section //===//
+//==================================//
+
+.landing {
+  position: relative;
+  height: 100vh;
+}
+
+//===// Landing > header //===//
+
+header {
+  position: relative;
+  z-index: 3;
+}
+
+//===// Landing > navbar //===//
+
+.nav {
+  &-toggle {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    z-index: 2;
+    color: color(txt-accent);
+  }
+
+  &-close {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    width: 15%;
+    z-index: 2;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    height: 100%;
+    width: 87.5%;
+    opacity: 0;
+    visibility: hidden;
+    background: color(bg);
+    border-left: 5px solid color(bg-accent);
+    text-align: center;
+    transform: translateX(100%);
+    transition: opacity time(nav-show-time) ease, visibility time(nav-show-time) ease;
+    animation: nav-hide time(nav-hide-time) ease-in-out;
+
+    &--visibility {
+      opacity: 1;
+      visibility: visible;
+      animation: nav-show time(nav-show-time) ease-in-out forwards;
+    }
+  }
+
+  &__link {
+    color: #f2d785;
+    font-size: 1.25rem;
+    transition: opacity time(btn-anim-time) ease;
+
+    @include mouse-hover;
+  }
+}
+
+//===// Landing > hero //===//
+
+.hero {
+  &-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    transform: translate(-50%, -50%);
+  }
+
+  display: block;
+  min-width: 22.5rem;
+
+  &__text {
+    font-family: font(hero);
+
+    &--first {
+      fill: color(hero-light);
+      font-weight: 400;
+    }
+
+    &--second {
+      fill: color(hero-dark);
+      font-weight: 700;
+      font-style: italic;
+    }
+
+    &--third {
+      fill: color(hero-light);
+      font-weight: 700;
+      font-style: italic;
+    }
+
+    &--fourth {
+      fill: color(hero-dark);
+      font-weight: 300;
+    }
+  }
+}
+
+//===// Landing > emoji //===//
+
+.emoji {
+  &-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    width: 100%;
+    opacity: 0.3;
+    overflow: hidden;
+  }
+
+  &-box {
+    color: color(emoji);
+    pointer-events: none;
+    text-align: center;
+    font-size: 10vmax;
+    margin: auto;
+  }
+}
+
+//=============================//
+//===// Main > Definition //===//
+//=============================//
+
+.definition {
+  background: color(bg-accent);
+  color: color(txt);
+
+  &__emoji {
+    top: 50px;
+    left: -35px;
+    font-size: 5em;
+  }
+}
+
+//==========================//
+//===// Main > History //===//
+//==========================//
+
+.history {
+  background: color(bg);
+  color: color(txt-accent);
+
+  &__emoji {
+    &--first {
+      top: 0;
+      left: -30px;
+      font-size: 8em;
+    }
+    &--second {
+      right: 10px;
+      bottom: -40px;
+      font-size: 4em;
+    }
+  }
+}
+
+//==========================//
+//===// Main > Meaning //===//
+//==========================//
+
+.meaning {
+  background: color(bg-accent);
+  color: color(txt);
+
+  &__emoji {
+    right: 20px;
+    bottom: -40px;
+    font-size: 4em;
+  }
+}
+//=========================//
+//===// Main > Impact //===//
+//=========================//
+
+.impact {
+  background: color(bg);
+  color: color(txt-accent);
+
+  &__emoji {
+    &--first {
+      top: -20px;
+      left: -40px;
+      font-size: 6em;
+    }
+
+    &--second {
+      bottom: -37.5px;
+      left: -37.5px;
+      font-size: 5em;
+    }
+
+    &--quote {
+      font-size: 3.5em;
+
+      &--inner,
+      &--outer {
+        right: -27.5px;
+        bottom: -27.5px;
+      }
+    }
+  }
+}
+
+//==================//
+//===// Footer //===//
+//==================//
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  background: color(bg-accent);
+  padding: 0.25em 1.5em 0.55em;
+}
+
+//===// Footer > Content //===//
+
+.footer {
+  &__text {
+    color: color(bg);
+    font-family: font(txt);
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+}

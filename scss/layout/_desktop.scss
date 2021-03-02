@@ -1,0 +1,205 @@
+//================================================================//
+//===// Incorporating required desktop layout scss variables //===//
+//================================================================//
+
+@use '../global' as *;
+@use '../components' as *;
+
+//==============================================//
+//===// Responsive layout - desktop layout //===//
+//==============================================//
+
+@include desktop {
+  //====================//
+  //===// Reusable //===//
+  //====================//
+
+  //===// Scroll up //===//
+
+  .scrollUp {
+    left: auto;
+    right: 15px;
+  }
+
+  //===// Quotes container //===//
+
+  .quotes-container {
+    display: grid;
+    align-items: baseline;
+
+    &--big {
+      grid-template-areas:
+        'a e'
+        'c d'
+        'h j'
+        'f b'
+        'g i';
+      gap: 0.25em;
+    }
+
+    &--small {
+      grid-template-areas: 'a b';
+      gap: 0.5em;
+    }
+  }
+
+  .quote {
+    &-1 {
+      grid-area: a;
+    }
+
+    &-2 {
+      grid-area: b;
+    }
+
+    &-3 {
+      grid-area: c;
+    }
+
+    &-4 {
+      grid-area: d;
+    }
+
+    &-5 {
+      grid-area: e;
+    }
+
+    &-6 {
+      grid-area: f;
+    }
+
+    &-7 {
+      grid-area: g;
+    }
+
+    &-8 {
+      grid-area: h;
+    }
+
+    &-9 {
+      grid-area: i;
+    }
+
+    &-10 {
+      grid-area: j;
+    }
+  }
+
+  //================//
+  //===// Main //===//
+  //================//
+
+  //===// Section spacing //===//
+
+  section + section {
+    padding: 3.9em 0 2.9em;
+  }
+
+  //===// Section elements //===//
+
+  .section {
+    &__title {
+      font-size: 2.5rem;
+    }
+
+    &__text {
+      font-size: 1.3rem;
+    }
+  }
+
+  //==================================//
+  //===// Main > Landing section //===//
+  //==================================//
+
+  .landing {
+    display: grid;
+    grid-template-areas: 'main emoji';
+    grid-template-columns: 2fr 1fr;
+    gap: 1em;
+  }
+
+  .main-container {
+    position: relative;
+    grid-area: main;
+  }
+
+  //===// Landing > navbar //===//
+
+  .nav {
+    &__link {
+      font-size: max(1.3rem, 1.5vw);
+    }
+  }
+
+  //===// Landing > hero //===//
+
+  .hero {
+    &-container {
+      position: relative;
+    }
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%) scale(0.85);
+  }
+
+  //===// Landing > emoji //===//
+
+  .emoji {
+    &-container {
+      all: unset;
+      grid-area: emoji;
+      overflow: hidden;
+      background: white;
+      padding: 0 1em;
+    }
+
+    &-box {
+      color: color(emoji-dark);
+      font-size: 8.4vw;
+      margin: auto;
+    }
+  }
+
+  //=========================//
+  //===// Main > Impact //===//
+  //=========================//
+
+  .impact {
+    &__emoji {
+      &--quote {
+        &--inner,
+        &--outer {
+          bottom: -36.5px;
+          right: -36.5px;
+        }
+      }
+    }
+  }
+
+  //==================//
+  //===// Footer //===//
+  //==================//
+
+  //===// Footer > Content //===//
+
+  .footer {
+    &__text {
+      font-size: 1.3rem;
+    }
+  }
+
+  //==================//
+  //===// Assets //===//
+  //==================//
+
+  //===// Buttons //===//
+
+  .btn {
+    &--scrollUp {
+      font-size: 3rem;
+    }
+  }
+}
